@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculator</title>
+	<script>
+		
+		function add()
+		{
+			var num1 = document.getElementById('number_1').value;
+			var num2 = document.getElementById('number_2').value;
+			var ans = Number(num1) + Number(num2);
+			//document.write(ans);
+			var divMessage = document.getElementById('divResult');
+			divMessage.innerText = ans;
+		}
+
+		function subtract()
+		{
+			var num1 = document.getElementById('number_1').value;
+			var num2 = document.getElementById('number_2').value;
+			var ans = num1 - num2;
+			var divMessage = document.getElementById('divResult');
+			divMessage.innerText = ans;
+		}
+
+		function mult()
+		{
+			var num1 = document.getElementById('number_1').value;
+			var num2 = document.getElementById('number_2').value;
+			var ans = num1*num2;
+			var divMessage = document.getElementById('divResult');
+			divMessage.innerText = ans;
+		}
+
+		function divide()
+		{	
+			// if(num2 == 0)
+			// 	var = undefined;
+			// else
+			var num1 = document.getElementById('number_1').value;
+			var num2 = document.getElementById('number_2').value;
+			var ans = num1/num2;
+			var divMessage = document.getElementById('divResult');
+			divMessage.innerText = ans;
+		}
+
+		function init()
+		{
+			var add_button = document.getElementById("add_b");
+			add_button.addEventListener('click', add);
+
+			var sub_button = document.getElementById("sub_b");
+			sub_button.addEventListener('click', subtract);
+
+			var mult_button = document.getElementById("mult_b");
+			mult_button.addEventListener('click', mult);
+
+			var div_button = document.getElementById("div_b");
+			div_button.addEventListener('click', divide);
+
+		}
+
+		window.addEventListener('load', init);
+	</script>
+</head>
+<body>
+	<h1>Calculator</h1>
+	<hr>
+	<input type="number" id="number_1">
+	<input type="number" id="number_2">
+	<br>
+	<input type="button" value="Add" id ="add_b">
+	<input type="button" value="Subtract" id="sub_b">
+	<input type="button" value="Multiply" id="mult_b">
+	<input type="button" value="Divide" id="div_b">
+	<div id="divResult">[result]</div>
+</body>
+</html>
