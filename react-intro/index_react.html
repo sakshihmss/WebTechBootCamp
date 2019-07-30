@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>React Intro</title>
+		<script src="react.development.js"></script>
+		<script src="react-dom.development.js"></script>
+	</head>
+	<body>
+		<h1>React Intro</h1>
+		<hr>
+		<input type="button" value="Render React">
+		<div id='react-root'></div>
+		<input type="button" value="Render DOM">
+		<div id='dom-root'></div>
+		
+	</body>
+</html>
+
+<!-- //ACTUAL DOM
+var h2Ele = document.createElement('h2')
+h2Ele.id = "heading-2"
+h2Ele.innerText = 'jskhsakda';
+document.getElementById('root').appendChild(h2Ele)
+
+//VIRTUAL DOM
+var virH2Ele = React.createElement('h2', {id : 'heading-2'}, 'vcjsacklsjcl');
+ReactDOM.render(virH2Ele, document.getElementById('root')); -->
