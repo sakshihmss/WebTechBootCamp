@@ -5,15 +5,45 @@
 		<title>React Intro</title>
 		<script src="react.development.js"></script>
 		<script src="react-dom.development.js"></script>
+		<script >
+			var counter = 0;
+			function r__react()
+			{
+				var virH2Ele = React.createElement('h2', {id : 'heading-2'}, 'Welcome to React-js!' + counter++);
+				ReactDOM.render(virH2Ele, document.getElementById('react-root'));
+				// var greetMessage = 'Hi, React Here, Have a nice day!';
+				// var divMessage = document.getElementById('react-root');
+				// divMessage.innerText = greetMessage;
+			}
+
+			function r__dom()
+			{
+				
+				var greetMessage = 'Hi, DOM here, Have a nice day!';
+				var divMessage = document.getElementById('dom-root');
+				divMessage.innerText = greetMessage;
+			}
+
+			function init()
+			{
+				var r_react = document.getElementById('react');
+				r_react.addEventListener('click', r__react);
+
+				var r_dom = document.getElementById('dom');
+				r_dom.addEventListener('click', r__dom);
+			}
+			window.addEventListener('load', init);
+
+		</script>
 	</head>
 	<body>
 		<h1>React Intro</h1>
 		<hr>
-		<input type="button" value="Render React">
+		<input type="button" value="Render React" id="react">
+		<input type="button" value="Render DOM" id="dom">
 		<div id='react-root'></div>
-		<input type="button" value="Render DOM">
 		<div id='dom-root'></div>
-		
+
 	</body>
 </html>
 
