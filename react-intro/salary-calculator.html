@@ -69,11 +69,8 @@
 			}
 		}
 		
-		// Higher Order Component
-		let SalaryCalculatorResult = (props)=> {
-			let { basic, hra, da, tax, salary } = props;
-				return(
-						<div className="field">
+		let SalaryCalculatorResult = ({ basic, hra, da, tax, salary }) => (
+				<div className="field">
 							<table>
 								<tbody>
 									<tr className="highlight">
@@ -86,9 +83,7 @@
 								</tbody>
 							</table>
 						</div>
-					)
-		}
-			
+			);
 		ReactDOM.render(<SalaryCalculator/>,
 			document.getElementById('root'));
 	</script>
