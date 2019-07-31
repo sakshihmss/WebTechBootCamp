@@ -68,10 +68,10 @@
 				)
 			}
 		}
-		class SalaryCalculatorResult extends React.Component
-		{
-			render(){
-				let { basic, hra, da, tax, salary } = this.props;
+		
+		// Higher Order Component
+		let SalaryCalculatorResult = (props)=> {
+			let { basic, hra, da, tax, salary } = props;
 				return(
 						<div className="field">
 							<table>
@@ -87,8 +87,8 @@
 							</table>
 						</div>
 					)
-			}
 		}
+			
 		ReactDOM.render(<SalaryCalculator/>,
 			document.getElementById('root'));
 	</script>
