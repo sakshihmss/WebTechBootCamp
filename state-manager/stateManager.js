@@ -2,7 +2,7 @@ let SM = (function(){
 	let _currentState = undefined,
 	_subscriptionFns = [],
 	_reducer = undefined,
-	_init_action = '@@INIT_ACTION'
+	_init_action = '@@INIT_ACTION';
 
 function getState(){
 	return _currentState;
