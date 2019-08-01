@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculator using State Manager</title>
+	<script src="stateManager.js"></script>
+	<script src="react.development.js"></script>
+	<script src="react-dom.development.js"></script>
+	<script src="babel.min.js"></script>
+	<script type="text/babel">
+		let calcActionCreators = {
+			add(number1, number2){
+				let payload = {number1 : number1, number2 : number2};
+				let action = { type : 'ADD', payload : payload};
+				return action;
+			},
+			subtract(number1, number2){
+				let payload = {number1 : number1, number2 : number2};
+				let action = { type : 'SUBTRACT', payload : payload};
+				return action;
+			},
+			multiply(number1, number2){
+				let payload = {number1 : number1, number2 : number2};
+				let action = { type : 'MULTIPLY', payload : payload};
+				return action;
+			},
+			divide(number1, number2){
+				let payload = {number1 : number1, number2 : number2};
+				let action = { type : 'DIVIDE', payload : payload};
+				return action;
+			}
+		};
+		class Calculator extends React.Component{
+			state = { number1 : 0, number2 : 0 };
+			render(){
+				let { add, subtract, multiply, divide } = this.props,
+					{ number1, number2 } = this.state;
+				return(
+					<div>
+						<input type="number" onChange={ evt => this.setState({number1 : evt.target.valueAsNumber})} />
+						<input type="number" onChange={ evt => this.setState({number2 : evt.target.valueAsNumber})} />
+						<br/>
+						<input type="button" value="ADD" onClick={() => add(number1, number2)}/>
+						<input type="button" value="SUBTRACT" onClick={() => subtract(number1, number2)}/>
+						<input type="button" value="MULTIPLY" onClick={() => multiply(number1, number2)}/>
+						<input type="button" value="DIVIDE" onClick={() => divide(number1, number2)}/>
+						<span> [ {this.props.value} ] </span>
+						
+					</div>
+				)
+			}
+		}
+		{/* action = { type : , payload : } */}
+		function calcReducer(currentState = 0, action){
+			if (action.type === 'ADD') return action.payload.number1 + action.payload.number2;
+			if (action.type === 'SUBTRACT') return action.payload.number1 - action.payload.number2;
+			if (action.type === 'MULTIPLY') return action.payload.number1 * action.payload.number2;
+			if (action.type === 'DIVIDE') return action.payload.number1 / action.payload.number2;
+			return currentState;
+		}
+		function bindActionCreators(actionCreator, dispatch){
+			return {
+				add(number1, number2){
+					let action = actionCreator.add(number1, number2);
+					dispatch(action);
+				},
+				subtract(number1, number2){
+					let action = actionCreator.subtract(number1, number2);
+					dispatch(action);
+				},
+				multiply(number1, number2){
+					let action = actionCreator.multiply(number1, number2);
+					dispatch(action);
+				},
+				divide(number1, number2){
+					let action = actionCreator.divide(number1, number2);
+					dispatch(action);
+				}
+			}
+		}
+		var store = SM.createStore(calcReducer);
+		let actionDispatchers = bindActionCreators(calcActionCreators, store.dispatch);
+		function renderSpinner(){
+			let calcValue = store.getState();
+			ReactDOM.render(<Calculator value={calcValue} {...actionDispatchers} />,
+				document.getElementById('root'));
+		}
+		renderSpinner();
+		store.subscribe(renderSpinner);
+	</script>
+</head>
+<body>
+	 <div id="root"></div>
+</body>
+</html>
