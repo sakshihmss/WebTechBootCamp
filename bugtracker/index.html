@@ -102,6 +102,7 @@
           </li>
         );
       };
+
       class BugTracker extends React.Component{
         state = {
           newBugName : ''
@@ -112,10 +113,11 @@
           let bugItems = bugs.map((bug,index) => (
             <BugItem bug={bug} toggle={toggle} key={index}/>
           ));
+          let closed_bugs = bugs.filter(bug => bug.isClosed); 
           return(
             <div>
               <section className="stats">
-                <span className="closed">1</span>
+                <span className="closed">{closed_bugs.length}</span>
                 <span> / </span>
                 <span>{bugs.length}</span>
               </section>
