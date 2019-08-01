@@ -10,22 +10,22 @@
 	<script type="text/babel">
 		let calcActionCreators = {
 			add(number1, number2){
-				let payload = {number1 : number1, number2 : number2};
+				let payload = { number1, number2};
 				let action = { type : 'ADD', payload : payload};
 				return action;
 			},
 			subtract(number1, number2){
-				let payload = {number1 : number1, number2 : number2};
+				let payload = { number1, number2};
 				let action = { type : 'SUBTRACT', payload : payload};
 				return action;
 			},
 			multiply(number1, number2){
-				let payload = {number1 : number1, number2 : number2};
+				let payload = {  number1, number2};
 				let action = { type : 'MULTIPLY', payload : payload};
 				return action;
 			},
 			divide(number1, number2){
-				let payload = {number1 : number1, number2 : number2};
+				let payload = { number1, number2};
 				let action = { type : 'DIVIDE', payload : payload};
 				return action;
 			}
@@ -52,10 +52,11 @@
 		}
 		{/* action = { type : , payload : } */}
 		function calcReducer(currentState = 0, action){
-			if (action.type === 'ADD') return action.payload.number1 + action.payload.number2;
-			if (action.type === 'SUBTRACT') return action.payload.number1 - action.payload.number2;
-			if (action.type === 'MULTIPLY') return action.payload.number1 * action.payload.number2;
-			if (action.type === 'DIVIDE') return action.payload.number1 / action.payload.number2;
+			let {number1, number2} = {...action.payload};
+			if (action.type === 'ADD') return number1 + number2;
+			if (action.type === 'SUBTRACT') return number1 - number2;
+			if (action.type === 'MULTIPLY') return number1 * number2;
+			if (action.type === 'DIVIDE') return number1 / number2;
 			return currentState;
 		}
 		function bindActionCreators(actionCreator, dispatch){
