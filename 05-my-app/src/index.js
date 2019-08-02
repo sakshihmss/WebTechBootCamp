@@ -49,20 +49,17 @@ ReactDOM.render(
 	<Provider store={appStore}>
 	 <Router>
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/bugs/">BugTracker</Link>
-          </li>
-          <li>
-            <Link to="/projects">Projects</Link>
-          </li>
-        </ul>
-
-        <hr />
-
+        <nav>
+        <span>
+            &nbsp;<Link to="/">Home</Link>
+          </span>
+          <span>
+            &nbsp;<Link to="/bugs/">BugTracker</Link>
+          </span>
+          <span>
+            &nbsp;<Link to="/projects">Projects</Link>
+          </span>
+        </nav>
         <Route exact path="/" component={Index} />
         <Route path="/bugs/" component={BugTracker} />
         <Route path="/projects/" component={ProjectTracker} />
