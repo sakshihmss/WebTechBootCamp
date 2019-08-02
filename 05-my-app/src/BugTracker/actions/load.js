@@ -1,14 +1,17 @@
 import axios from 'axios';
+import { getAll } from '../services/bugApi';
 
 export function load(){
-	return function(dispatch){
-		axios.get('http://localhost:3030/bugs')
-		.then(response => response.data)
-		.then(bugs => {
-			let action = { type : 'LOAD', payload : bugs};
-			dispatch(action);
-		});
+	return async function(dispatch){
+		/*getAll()		
+			.then(bugs => {
+				let action = { type : 'LOAD', payload : bugs};
+				dispatch(action);
+			});*/
+
+		let bugs = await getAll();
+		let action = { type : 'LOAD', payload : bugs};
+		dispatch(action);
+			
 	}
 }
-
-//every .then return a promise.... so, here, we get a promise containing an action.
