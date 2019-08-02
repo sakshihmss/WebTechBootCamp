@@ -1,7 +1,8 @@
 import bugsReducer from '../BugTracker/reducers/';
 import spinnerReducer from '../Spinner/reducer/';
 import projectsReducer from '../Projects/reducers/';
-import 	{createStore, combineReducers} from 'redux';
+import 	{createStore, combineReducers, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 
 let rootReducer = combineReducers({
 	bugs : bugsReducer,
@@ -9,6 +10,6 @@ let rootReducer = combineReducers({
 	spinner : spinnerReducer
 });
 
-let store = createStore(rootReducer);
+let store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;

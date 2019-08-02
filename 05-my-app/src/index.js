@@ -18,7 +18,9 @@ import * as spinnerActionCreators from './Spinner/actions';
 import ProjectTracker from './Projects';
 import {Provider} from 'react-redux';
 
+// import axios from 'axios';
 
+// window['axios'] = axios;
 
       
 // function renderApp(){
