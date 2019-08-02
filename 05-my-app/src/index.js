@@ -12,13 +12,12 @@ import appStore from './store';
 import BugTracker from './BugTracker';
 import Spinner from './Spinner';
 
-import * as bugActionCreators from './BugTracker/actions';
 import * as spinnerActionCreators from './Spinner/actions';
 import ProjectTracker from './Projects';
-import * as projectActionCreators from './Projects/actions';
+import {Provider} from 'react-redux';
 
 
-let bugActionDispatchers = bindActionCreators(bugActionCreators, appStore.dispatch);
+
       
 // function renderApp(){
 // 	let bugs = appStore.store1.getState();
@@ -37,23 +36,16 @@ let bugActionDispatchers = bindActionCreators(bugActionCreators, appStore.dispat
 // renderSpinner();
 // appStore.store2.subscribe(renderSpinner);
 
-let projectActionDispatchers = bindActionCreators(projectActionCreators, appStore.dispatch);
-      
-function renderApp(){
-	let storeState = appStore.getState();
-	let bugs = storeState.bugs,
-		projects = storeState.projects;
+ReactDOM.render(
+	<Provider store={appStore}>
+	<div>
+		<BugTracker/>
+		<hr/>
+		<ProjectTracker/>
+	</div>
+	</Provider>,
+	document.getElementById('root'));
 
-	ReactDOM.render(
-		<div>
-			<BugTracker {...bugActionDispatchers} bugs={bugs}/>
-			<hr/>
-			<ProjectTracker projects={projects} {...projectActionDispatchers} />
-		</div>,
-		document.getElementById('root'));
-}
-renderApp();
-appStore.subscribe(renderApp);
 
 //import { add } from './calculator'
 //import xyz from './calculator' 

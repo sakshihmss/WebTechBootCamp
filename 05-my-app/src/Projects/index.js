@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import * as projectActionCreators from './actions';
+import  { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
 
 class ProjectTracker extends Component{
   state : {
@@ -45,6 +48,27 @@ class ProjectTracker extends Component{
   }
 }
 
+// function mapStateToProps(storeState) {
+//   let projects = storeState.projects;
+//   return { projects : projects};
+// }
 
-export default ProjectTracker;
+// function mapStateToProps({projects}){
+//   return {projects};
+// }
+
+// let mapStateToProps = ({projects}) => ({projects});
+
+// function mapDispatchToProps(dispatch){
+//   let projectActionDispatchers = bindActionCreators(projectActionCreators, dispatch);
+//   return projectActionDispatchers;
+// }
+
+// function mapDispatchToProps(dispatch){
+//   return bindActionCreators(projectActionCreators, dispatch);
+// }
+
+export default connect(
+    ({projects}) => ({projects}),
+    (dispatch) => bindActionCreators(projectActionCreators, dispatch))(ProjectTracker);
 
